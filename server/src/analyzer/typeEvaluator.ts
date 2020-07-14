@@ -8400,12 +8400,7 @@ export function createTypeEvaluator(importLookup: ImportLookup, printTypeFlags: 
                     );
                     return clsType;
                 } else if ((flags & FunctionTypeFlags.StaticMethod) === 0) {
-                    const selfType = TypeVarType.createInstance(
-                        `__type_of_self_${containingClassType.details.name}`,
-                        /* isParameterSpec */ false,
-                        /* isSynthesized */ true
-                    );
-                    selfType.boundType = ObjectType.create(
+                    const selfType = ObjectType.create(
                         selfSpecializeClassType(containingClassType, /* setSkipAbstractClassTest */ true)
                     );
                     return selfType;
